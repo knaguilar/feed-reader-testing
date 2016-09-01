@@ -51,7 +51,9 @@ $(function() {
             });
 
          }
-
+         //for loop that will go through each feed in the allFeeds array and check -
+         //1: that the url variable is defined and not empty
+         //2: that each feed has a name variable defined and not empty
          for (var feed = 0; feed < allFeeds.length; feed++) {
              test_for_url(allFeeds[feed]);
              test_for_name(allFeeds[feed]);
@@ -125,6 +127,8 @@ $(function() {
         });
 
          it('content changes when new feed is loaded', function(done) {
+            //loop through feed and check that each new content added
+            //makes a change in the html
             for (var i = 1; i < allFeeds.length -1; i++) {
                 loadFeed(i, function() {
                     expect($('.feed').html()).not.toEqual(previousContent);
