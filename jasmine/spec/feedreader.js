@@ -33,7 +33,6 @@ $(function() {
          */
          function test_for_url(feed) {
             it('have a URL defined', function() {
-                expect(feed.url).toBeDefined();
                 expect(feed.url).toBeTruthy();
             });
 
@@ -46,7 +45,6 @@ $(function() {
          */
          function test_for_name(feed) {
             it('have a Name defined', function() {
-                expect(feed.name).toBeDefined();
                 expect(feed.name).toBeTruthy();
             });
 
@@ -93,10 +91,9 @@ $(function() {
     describe('Initial Entries', function() {
 
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
+            loadFeed(0, done);
             });
-        });
+
          /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -105,7 +102,8 @@ $(function() {
          */
 
          it('at least a single entry element is within feed container', function() {
-            expect($('.feed').length).not.toBe(0);
+            console.log($('.feed .entry').length);
+            expect($('.feed .entry').length).not.toBe(0);
          });
 
     });
@@ -129,12 +127,10 @@ $(function() {
          it('content changes when new feed is loaded', function(done) {
             //loop through feed and check that each new content added
             //makes a change in the html
-            for (var i = 1; i < allFeeds.length -1; i++) {
-                loadFeed(i, function() {
+                loadFeed(1, function() {
                     expect($('.feed').html()).not.toEqual(previousContent);
                     done();
                 });
-            }
          });
     });
 
